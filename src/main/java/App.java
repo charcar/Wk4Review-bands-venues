@@ -46,7 +46,14 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    
+    get("/bands/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Integer bandId = Integer.parseInt(request.params(":id"));
+      Band band = Band.find(bandId);
+      model.put("band", band);
+      model.put("template", "templates/band.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
     // get("/students", (request,response) -> {
     //   HashMap<String, Object> model = new HashMap<String, Object>();

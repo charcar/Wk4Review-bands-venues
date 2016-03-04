@@ -5,15 +5,17 @@
   <h1>band || venue</h1>
   <h3>Track Your Favorites Bands Favorite Venues</h3>
   <h4><a href="/bands">view bands</a></h4>
-  
+
   <hr>
   <div class = "form-group">
     <div class="col-sm-6">
       <form action="/add-band" method="post">
         <label for="bandName">band name</label>
         <input name="bandName" id="bandName" type="text" required>
-        <label for="description">description</label>
-        <textarea class="form-control" name="description" id="description" placeholder="enter a description or notes here..."></textarea>
+        <div class="form-group">
+          <label for="description">description</label>
+          <textarea class="form-control" name="description" id="description" placeholder="enter a description or notes here..."></textarea>
+        </div>
         <button type="submit" class="btn btn-default">add band</button>
       </div>
     </form>

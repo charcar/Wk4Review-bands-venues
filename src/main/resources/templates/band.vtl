@@ -1,3 +1,14 @@
 band.vtl
 
 <h3>here is $band.getName()'s list of the venues they have played</h3>
+
+#if($bands.getVenues().size() > 0)
+  #foreach ($venue in $band.getVenues())
+    <ul>
+      <li><a href="venues/$venue.getId()">$venue.getName()</a></li>
+  #end
+#else
+  <p>There are no venues for $band.getName()</p>
+#end
+
+<p><a href="/">home</a></p>
