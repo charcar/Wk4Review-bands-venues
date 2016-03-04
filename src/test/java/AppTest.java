@@ -17,9 +17,6 @@ public class AppTest extends FluentTest {
   @ClassRule
   public static ServerRule server = new ServerRule();
 
-  // @Rule
-  // public ClearRule clearRule = new ClearRule();
-
   @Rule
   public DatabaseRule database = new DatabaseRule();
 

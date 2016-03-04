@@ -23,11 +23,11 @@ public class VenueTest {
 
   // @Test
   // public void save_savesIntoDatabase_true() {
-  //   Venue myVenue = new Venue("Family Trouble/Car Trouble", "HOMEC300");
+  //   Venue myVenue = new Venue("Olympian");
   //   myVenue.save();
   //   assertTrue(Venue.all().get(0).equals(myVenue));
   // }
-  //
+
   // @Test
   // public void find_findVenueInDatabase_true() {
   //   Venue myVenue = new Venue("Sociology of Food", "SOCY210");

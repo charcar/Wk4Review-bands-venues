@@ -33,15 +33,15 @@ public class Venue {
       return false;
     } else {
       Venue newVenue = (Venue) otherVenue;
-      return this.getName().equals(newVenue.getName());
+      return this.getName().equals(newVenue.getName()) && this.getId() == newVenue.getId();
     }
   }
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO venues(name) VALUES (:name)";
+      String sql = "INSERT INTO venues (name) VALUES (:name)";
       this.id = (int) con.createQuery(sql, true)
-        .addParameter("name", name)
+        .addParameter("name", this.name)
         .executeUpdate()
         .getKey();
     }

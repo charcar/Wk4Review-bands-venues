@@ -1,11 +1,8 @@
-# University Registrar
+# Band Venue Tracker
 
-#### University Registrar for students and courses | March 1, 2016
+#### Track bands and the venues they have played | March 4, 2016
 
-#### Anna Becker & Charlie Carter
-
-## Description
-An app for a University registrar to keep track of students and courses.
+#### Charlie Carter
 
 ## Setup/Installation Requirements
 
@@ -29,7 +26,7 @@ Java, Spark, Junit, Velocity, Fluentlenium, Bootstrap
 
 This software is licensed under the MIT license.
 
-Copyright (c) 2016 Anna Becker & Charlie Carter
+Copyright (c) 2016 Charlie Carter
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
