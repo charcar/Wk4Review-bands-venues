@@ -20,11 +20,11 @@ public class AppTest extends FluentTest {
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
-  // @Test
-  // public void rootTest() {
-  //     goTo("http://localhost:4567/");
-  //     assertThat(pageSource()).contains("ReGistRar");
-  // }
+  @Test
+  public void rootTest() {
+      goTo("http://localhost:4567/");
+      assertThat(pageSource()).contains("Track Your Favorites Bands Favorite Venues");
+  }
   //
   // @Test
   // public void studentIsCreatedAndDisplayed() {

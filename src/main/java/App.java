@@ -11,12 +11,43 @@ public class App {
     staticFileLocation("/public/");
     String layout = "templates/layout.vtl";
 
-    // get("/", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   model.put("template", "templates/index.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
-    //
+    get("/", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/index.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/add-band", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      String name = request.queryParams("bandName");
+      String description = request.queryParams("description");
+      Band newBand = new Band(name, description);
+      newBand.save();
+      response.redirect("/");
+      return null;
+    });
+
+    post("/add-venue", (request, response) -> {
+      String name = request.queryParams("venueName");
+      Venue newVenue = new Venue(name);
+      newVenue.save();
+      response.redirect("/");
+      return null;
+    });
+
+    get("/bands", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      List<Band> bands = Band.all();
+        if(bands.size() == 0) {
+          bands = null;
+        }
+      model.put("bands", bands);
+      model.put("template", "templates/bands.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    
+
     // get("/students", (request,response) -> {
     //   HashMap<String, Object> model = new HashMap<String, Object>();
     //   model.put("students", Student.all());

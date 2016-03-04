@@ -1,0 +1,14 @@
+bands.vtl
+
+<h3>all the bands</h3>
+
+#if($bands)
+  #foreach($band in $bands)
+    <ul>
+    <li><p><a href="/bands/$band.getId()">$band.getName()</a></p></li>
+    </ul>
+  #end
+
+#else
+  <p>put some bands in</p>
+#end
