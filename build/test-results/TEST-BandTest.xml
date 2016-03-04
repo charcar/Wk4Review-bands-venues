@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="BandTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2016-03-04T20:35:56" hostname="xanadus-MacBook-Air.local" time="0.461">
+  <properties/>
+  <testcase name="getName_returnsBandName" classname="BandTest" time="0.185"/>
+  <testcase name="equals_returnsTrueIfDescriptionsAretheSame" classname="BandTest" time="0.009"/>
+  <testcase name="save_savesObjectIntoDatabase" classname="BandTest" time="0.028"/>
+  <testcase name="delete_deletesAllBandsAndListsAssoicationes" classname="BandTest" time="0.048"/>
+  <testcase name="all_emptyAtFirst" classname="BandTest" time="0.013"/>
+  <testcase name="find_findsBandInDatabase_true" classname="BandTest" time="0.023"/>
+  <testcase name="save_assignsIdToObject" classname="BandTest" time="0.024"/>
+  <testcase name="addVenue_addsVenueToBand" classname="BandTest" time="0.038"/>
+  <testcase name="getId_returnsBandId" classname="BandTest" time="0.022"/>
+  <testcase name="update_updatesBand" classname="BandTest" time="0.033"/>
+  <testcase name="getVenues_returnsAllVenues_List" classname="BandTest" time="0.035"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
