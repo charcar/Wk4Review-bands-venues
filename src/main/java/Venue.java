@@ -7,7 +7,6 @@ public class Venue {
   private String name;
 
   public Venue(String name) {
-    this.id = id;
     this.name = name;
   }
 
@@ -19,9 +18,8 @@ public class Venue {
     return name;
   }
 
-
   public static List<Venue> all() {
-    String sql = "SELECT id FROM venues";
+    String sql = "SELECT * FROM venues";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Venue.class);
     }
@@ -38,10 +36,10 @@ public class Venue {
   }
 
   public void save() {
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO venues (name) VALUES (:name)";
+    String sql = "INSERT INTO venues (name) VALUES (:name)";
+    try(Connection con = DB.sql2o.open()){
       this.id = (int) con.createQuery(sql, true)
-        .addParameter("name", this.name)
+        .addParameter("name", name)
         .executeUpdate()
         .getKey();
     }
