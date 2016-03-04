@@ -1,0 +1,17 @@
+<h1>Edit $student.getName()</h1>
+
+<form action="/students/$student.getId()/edit" method="post">
+  <label for="name">Name</label>
+  <input id="name" name="name" type="text" value="$student.getName()">
+  <label for="enrollment">Enrollment Date</label>
+  <input id="enrollment" name="enrollment" type="text" value="$student.getDateOfEnrollment()">
+  <button type="submit">Update student</button>
+</form>
+
+
+
+<form action='/students/$student.getId()' method='post'>
+  <button type="submit" class="btn btn-warning">Delete This Student</button>
+</form>
+
+<a href="/" class="btn btn-info" role="button">Return to Main Page</a>
