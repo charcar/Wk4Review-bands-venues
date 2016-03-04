@@ -23,37 +23,37 @@ public class AppTest extends FluentTest {
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
-  @Test
-  public void rootTest() {
-      goTo("http://localhost:4567/");
-      assertThat(pageSource()).contains("ReGistRar");
-  }
-
-  @Test
-  public void studentIsCreatedAndDisplayed() {
-    goTo("http://localhost:4567/students");
-    fill("#name").with("Bob");
-    fill("#enrollment").with("12/12/2016");
-    submit(".btn");
-    assertThat(pageSource()).contains("Bob");
-  }
-
-
-  @Test
-  public void courseIsCreatedAndDisplayed() {
-    goTo("http://localhost:4567/courses");
-    fill("#name").with("Economics of Butter");
-    fill("#number").with("ECO111");
-    submit(".btn");
-    assertThat(pageSource()).contains("Economics of Butter");
-  }
-
-  @Test
-  public void studentInfoIsDisplayed() {
-    Student newStudent = new Student("Anne", "12/12/2016");
-    newStudent.save();
-    String studentPath = String.format("http://localhost:4567/students/%d", newStudent.getId());
-    goTo(studentPath);
-    assertThat(pageSource().contains("zy"));
-  }
+  // @Test
+  // public void rootTest() {
+  //     goTo("http://localhost:4567/");
+  //     assertThat(pageSource()).contains("ReGistRar");
+  // }
+  //
+  // @Test
+  // public void studentIsCreatedAndDisplayed() {
+  //   goTo("http://localhost:4567/students");
+  //   fill("#name").with("Bob");
+  //   fill("#enrollment").with("12/12/2016");
+  //   submit(".btn");
+  //   assertThat(pageSource()).contains("Bob");
+  // }
+  //
+  //
+  // @Test
+  // public void courseIsCreatedAndDisplayed() {
+  //   goTo("http://localhost:4567/courses");
+  //   fill("#name").with("Economics of Butter");
+  //   fill("#number").with("ECO111");
+  //   submit(".btn");
+  //   assertThat(pageSource()).contains("Economics of Butter");
+  // }
+  //
+  // @Test
+  // public void studentInfoIsDisplayed() {
+  //   Student newStudent = new Student("Anne", "12/12/2016");
+  //   newStudent.save();
+  //   String studentPath = String.format("http://localhost:4567/students/%d", newStudent.getId());
+  //   goTo(studentPath);
+  //   assertThat(pageSource().contains("zy"));
+  // }
 }
