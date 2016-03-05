@@ -54,8 +54,9 @@ public class App {
         if(venues.size() == 0) {
           venues = null;
         }
-      model.put("venues", venues);
       model.put("band", band);
+      model.put("venues", band.notplayedVenues());
+      model.put("bandVenues", band.getVenues());
       model.put("template", "templates/band.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
