@@ -96,57 +96,12 @@ public class App {
       return null;
     });
 
-
-    // get("/students/:id/edit", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   Band student = Band.find(Integer.parseInt(request.params("id")));
-    //   model.put("student", student);
-    //   model.put("template", "templates/student-edit.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
-    //
-    // post("/students/:id/edit", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   Student student = Student.find(Integer.parseInt(request.params("id")));
-    //   String name = request.queryParams("name");
-    //   String enrollment = request.queryParams("enrollment");
-    //   student.update(name, enrollment);
-    //   response.redirect("/students");
-    //   return null;
-    //   });
-    //
-    // post("/students/:id", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   Student student = Student.find(Integer.parseInt(request.params("id")));
-    //   student.delete();
-    //   response.redirect("/students");
-    //   return null;
-    // });
-    //
-    // get("/courses/:id/edit", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   Course course = Course.find(Integer.parseInt(request.params("id")));
-    //   model.put("course", course);
-    //   model.put("template", "templates/course-edit.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
-    //
-    // post("/courses/:id/edit", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   Course course = Course.find(Integer.parseInt(request.params("id")));
-    //   String name = request.queryParams("name");
-    //   String number = request.queryParams("number");
-    //   course.update(name, number);
-    //   response.redirect("/courses");
-    //   return null;
-    //   });
-    //
-    // post("/courses/:id", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   Course course = Course.find(Integer.parseInt(request.params("id")));
-    //   course.delete();
-    //   response.redirect("/courses");
-    //   return null;
-    // });
+    post("/bands/:id/delete", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Band band = Band.find(Integer.parseInt(request.params("id")));
+      band.delete();
+      response.redirect("/bands");
+      return null;
+    });
   }
 }
