@@ -78,84 +78,28 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    // get("/students", (request,response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   model.put("students", Student.all());
-    //   model.put("template", "templates/students.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
-    //
-    // post("/students", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   String name = request.queryParams("name");
-    //   String enrollment = request.queryParams("enrollment");
-    //   Student newStudent = new Student(name, enrollment);
-    //   newStudent.save();
-    //   response.redirect("/students");
-    //   return null;
-    // });
-    //
-    // get("/courses", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   List<Course> courses = Course.all();
-    //   model.put("courses", courses);
-    //   model.put("template", "templates/courses.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
-    //
-    // post("/courses", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   String name = request.queryParams("name");
-    //   String number = request.queryParams("number");
-    //   Course newCourse = new Course(name, number);
-    //   newCourse.save();
-    //   response.redirect("/courses");
-    //   return null;
-    // });
-    //
-    // get("/students/:id", (request,response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   int id = Integer.parseInt(request.params("id"));
-    //   Student student = Student.find(id);
-    //   model.put("student", student);
-    //   model.put("allCourses", Course.all());
-    //   model.put("template", "templates/student.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
-    //
-    // get("/courses/:id", (request,response) ->{
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   int id = Integer.parseInt(request.params("id"));
-    //   Course course = Course.find(id);
-    //   model.put("course", course);
-    //   model.put("allStudents", Student.all());
-    //   model.put("template", "templates/course.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
-    //
-    // post("/add_students", (request, response) -> {
-    //   int student_id = Integer.parseInt(request.queryParams("student_id"));
-    //   int course_id = Integer.parseInt(request.queryParams("course_id"));
-    //   Course course = Course.find(course_id);
-    //   Student student = Student.find(student_id);
-    //   course.addStudent(student);
-    //   response.redirect("/courses/" + course_id);
-    //   return null;
-    // });
-    //
-    // post("/add_courses", (request, response) -> {
-    //   int student_id = Integer.parseInt(request.queryParams("student_id"));
-    //   int course_id = Integer.parseInt(request.queryParams("course_id"));
-    //   Course course = Course.find(course_id);
-    //   Student student = Student.find(student_id);
-    //   student.addCourse(course);
-    //   response.redirect("/students/" + student_id);
-    //   return null;
-    // });
-    //
+    get("/bands/:id/update", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Band band = Band.find(Integer.parseInt(request.params(":id")));
+      model.put("band", band);
+      model.put("template", "templates/band-edit.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/bands/:id/edit", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Band band = Band.find(Integer.parseInt(request.params("id")));
+      String name = request.queryParams("name");
+      String description = request.queryParams("description");
+      band.update(name, description);
+      response.redirect("/bands");
+      return null;
+    });
+
+
     // get("/students/:id/edit", (request, response) -> {
     //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   Student student = Student.find(Integer.parseInt(request.params("id")));
+    //   Band student = Band.find(Integer.parseInt(request.params("id")));
     //   model.put("student", student);
     //   model.put("template", "templates/student-edit.vtl");
     //   return new ModelAndView(model, layout);

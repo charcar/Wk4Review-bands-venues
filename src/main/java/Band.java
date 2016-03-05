@@ -65,16 +65,6 @@ public class Band {
     }
   }
 
-  public void update(String name) {
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE bands SET name = :newName, description = :newDescription WHERE id = :id";
-      con.createQuery(sql)
-        .addParameter("name", name)
-        .addParameter("id", id)
-        .executeUpdate();
-    }
-  }
-
   public void addVenue(int venue_id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO bands_venues (venue_id, band_id) VALUES (:venue_id, :band_id)";
@@ -91,6 +81,7 @@ public class Band {
   //     return con.createQuery(sql).addParameter("id", id).executeAndFetch(Venue.class);
   //   }
   // }
+  
   public List<Venue> getVenues() {
     try(Connection con = DB.sql2o.open()){
       String sql = "SELECT DISTINCT ON (name) venues.* FROM bands JOIN bands_venues ON (bands.id = bands_venues.band_id) JOIN venues ON (bands_venues.venue_id = venues.id) WHERE bands.id=:id ORDER BY name";

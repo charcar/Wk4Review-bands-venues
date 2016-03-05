@@ -1,7 +1,9 @@
 band.vtl
 
-<h3>here is $band.getName()'s list of the venues they have played</h3>
-
+<h4>a little info about $band.getName():</h4>
+<p>$band.getDescription()</p>
+<hr>
+<h4>here are $band.getName()'s venues they have played</h4>
 #foreach ($bandVenue in $bandVenues)
   <ul>
     <li>$bandVenue.getName()</li>
