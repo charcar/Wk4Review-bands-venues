@@ -5,7 +5,9 @@ bands.vtl
 #if($bands)
   #foreach($band in $bands)
     <ul>
-    <li><p><a href="/bands/$band.getId()">$band.getName()</a></p></li>
+    <li><p><a href="/bands/$band.getId()">$band.getName()</a>
+      <a href="/bands/$band.getId()/update">edit</a>
+    </p></li>
     </ul>
   #end
 
