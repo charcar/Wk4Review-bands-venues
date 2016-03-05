@@ -1,6 +1,6 @@
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.ArrayList;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
@@ -50,7 +50,29 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Integer bandId = Integer.parseInt(request.params(":id"));
       Band band = Band.find(bandId);
+      List<Venue> venues = Venue.all();
+        if(venues.size() == 0) {
+          venues = null;
+        }
+      model.put("venues", venues);
       model.put("band", band);
+      model.put("template", "templates/band.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/bands/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Band band = Band.find(Integer.parseInt(request.params(":id")));
+      String [] addVenues = request.queryParamsValues("bandVenues");
+      ArrayList<Venue> bandVenue = new ArrayList<Venue>();
+      if (addVenues != null) {
+        for(String venue : addVenues) {
+          band.addVenue(Integer.parseInt(venue));
+        }
+      }
+      model.put("band", band);
+      model.put("bandVenues", band.getVenues());
+      model.put("venues", band.notplayedVenues());
       model.put("template", "templates/band.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());

@@ -2,13 +2,18 @@ band.vtl
 
 <h3>here is $band.getName()'s list of the venues they have played</h3>
 
-#if($bands.getVenues().size() > 0)
-  #foreach ($venue in $band.getVenues())
-    <ul>
-      <li><a href="venues/$venue.getId()">$venue.getName()</a></li>
-  #end
-#else
-  <p>There are no venues for $band.getName()</p>
+#foreach ($bandVenue in $bandVenues)
+  <ul>
+    <li><a href="venues/$venue.getId()">$venue.getName()</a></li>
 #end
 
+<hr>
+<h4>Add venues that this band has played</h4>
+<form action="/bands/$band.getId()" method="post">
+  #foreach($venue in $venues)
+    <label><input type="checkbox" value="$venue.getId()" name="bandVenues"> $venue.getName()</label>
+  #end
+  <button type="submit" class="btn btn-default">add venues</button>
+</form>
+<hr>
 <p><a href="/">home</a></p>

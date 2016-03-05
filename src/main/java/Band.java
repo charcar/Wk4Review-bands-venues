@@ -75,20 +75,35 @@ public class Band {
     }
   }
 
-  public void addVenue(Venue venue) {
+  public void addVenue(int venue_id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO bands_venues (venue_id, band_id) VALUES (:venue_id, :band_id)";
       con.createQuery(sql)
-        .addParameter("venue_id", venue.getId())
+        .addParameter("venue_id", venue_id)
         .addParameter("band_id", this.getId())
         .executeUpdate();
     }
   }
 
+  // public List<Venue> getVenues() {
+  //   try(Connection con = DB.sql2o.open()){
+  //     String sql = "SELECT venues.* FROM bands JOIN bands_venues ON (bands.id = bands_venues.band_id) JOIN venues ON (bands_venues.venue_id = venues.id) WHERE bands.id = :id";
+  //     return con.createQuery(sql).addParameter("id", id).executeAndFetch(Venue.class);
+  //   }
+  // }
   public List<Venue> getVenues() {
     try(Connection con = DB.sql2o.open()){
-      String sql = "SELECT venues.* FROM bands JOIN bands_venues ON (bands.id = bands_venues.band_id) JOIN venues ON (bands_venues.venue_id = venues.id) WHERE bands.id = :id";
+      String sql = "SELECT DISTINCT ON (name) venues.* FROM bands JOIN bands_venues ON (bands.id = bands_venues.band_id) JOIN venues ON (bands_venues.venue_id = venues.id) WHERE bands.id=:id ORDER BY name";
       return con.createQuery(sql).addParameter("id", id).executeAndFetch(Venue.class);
+    }
+  }
+
+  public List<Venue> notplayedVenues() {
+    String sql = "SELECT * FROM venues WHERE id NOT IN (SELECT venue_id FROM bands_venues WHERE band_id=:id)";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetch(Venue.class);
     }
   }
 
