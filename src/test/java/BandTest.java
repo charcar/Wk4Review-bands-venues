@@ -51,7 +51,7 @@ public class BandTest {
     Band myBand = new Band("Four Tet", "new electro");
     myBand.save();
 
-    myBand.addVenue(myVenue);
+    myBand.addVenue(myVenue.getId());
     Venue savedVenue = myBand.getVenues().get(0);
     assertTrue(myVenue.equals(savedVenue));
   }
@@ -64,7 +64,7 @@ public class BandTest {
     Band myBand = new Band("Lettuce", "contemporary funk");
     myBand.save();
 
-    myBand.addVenue(myVenue);
+    myBand.addVenue(myVenue.getId());
     List savedVenues = myBand.getVenues();
     assertEquals(savedVenues.size(), 1);
   }
@@ -77,7 +77,7 @@ public class BandTest {
     Band myBand = new Band("The Wu-tang Clan", "contemporary poetry");
     myBand.save();
 
-    myBand.addVenue(myVenue);
+    myBand.addVenue(myVenue.getId());
     myBand.delete();
     assertEquals(myVenue.getBands().size(), 0);
   }

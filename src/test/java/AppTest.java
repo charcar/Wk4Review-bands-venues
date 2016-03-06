@@ -27,32 +27,34 @@ public class AppTest extends FluentTest {
       goTo("http://localhost:4567/");
       assertThat(pageSource()).contains("Track Your Favorites Bands Favorite Venues");
   }
-  //
-  // @Test
-  // public void studentIsCreatedAndDisplayed() {
-  //   goTo("http://localhost:4567/students");
-  //   fill("#name").with("Bob");
-  //   fill("#enrollment").with("12/12/2016");
-  //   submit(".btn");
-  //   assertThat(pageSource()).contains("Bob");
-  // }
-  //
-  //
-  // @Test
-  // public void courseIsCreatedAndDisplayed() {
-  //   goTo("http://localhost:4567/courses");
-  //   fill("#name").with("Economics of Butter");
-  //   fill("#number").with("ECO111");
-  //   submit(".btn");
-  //   assertThat(pageSource()).contains("Economics of Butter");
-  // }
-  //
-  // @Test
-  // public void studentInfoIsDisplayed() {
-  //   Student newStudent = new Student("Anne", "12/12/2016");
-  //   newStudent.save();
-  //   String studentPath = String.format("http://localhost:4567/students/%d", newStudent.getId());
-  //   goTo(studentPath);
-  //   assertThat(pageSource().contains("zy"));
-  // }
+
+  @Test
+  public void bandIsCreatedAndDisplayed() {
+    Band myBand = new Band("The Pretenders", "Definitely not fake");
+    myBand.save();
+    goTo("http://localhost:4567/bands");
+    assertThat(pageSource()).contains("The Pretenders");
+  }
+
+  @Test
+  public void venueIsCreatedAndDisplayed() {
+    Band myBand = new Band("The Pretenders", "Definitely not fake");
+    myBand.save();
+    Venue myVenue = new Venue("Laurelthirst");
+    myVenue.save();
+    String newVenueBandPath = String.format("http://localhost:4567/bands/%d", myBand.getId());
+    goTo(newVenueBandPath);
+    assertThat(pageSource()).contains("Laurelthirst");
+  }
+
+  @Test
+  public void deleteBand() {
+    Band newBand = new Band("Flogging Molly's", "good stuff");
+    newBand.save();
+    String bandPath = String.format("http://localhost:4567/bands/%d/update", newBand.getId());
+    goTo(bandPath);
+    submit("#deleteBand");
+    goTo("http://localhost:4567/bands");
+    assertFalse(pageSource().contains("Floggin Molly's"));
+  }
 }
