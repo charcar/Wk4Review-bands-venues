@@ -10,14 +10,14 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner:
 --
 
 CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner:
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
@@ -30,7 +30,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: bands; Type: TABLE; Schema: public; Owner: xanadu; Tablespace: 
+-- Name: bands; Type: TABLE; Schema: public; Owner: xanadu; Tablespace:
 --
 
 CREATE TABLE bands (
@@ -64,7 +64,7 @@ ALTER SEQUENCE bands_id_seq OWNED BY bands.id;
 
 
 --
--- Name: bands_venues; Type: TABLE; Schema: public; Owner: xanadu; Tablespace: 
+-- Name: bands_venues; Type: TABLE; Schema: public; Owner: xanadu; Tablespace:
 --
 
 CREATE TABLE bands_venues (
@@ -98,7 +98,7 @@ ALTER SEQUENCE bands_venues_id_seq OWNED BY bands_venues.id;
 
 
 --
--- Name: venues; Type: TABLE; Schema: public; Owner: xanadu; Tablespace: 
+-- Name: venues; Type: TABLE; Schema: public; Owner: xanadu; Tablespace:
 --
 
 CREATE TABLE venues (
@@ -156,8 +156,6 @@ ALTER TABLE ONLY venues ALTER COLUMN id SET DEFAULT nextval('venues_id_seq'::reg
 --
 
 COPY bands (id, name, description) FROM stdin;
-1	Kendrick Lamar	
-2	The Kinks	one of the greats
 \.
 
 
@@ -173,13 +171,6 @@ SELECT pg_catalog.setval('bands_id_seq', 3, true);
 --
 
 COPY bands_venues (id, band_id, venue_id) FROM stdin;
-1	1	1
-2	1	1
-3	1	1
-4	1	1
-5	1	1
-6	1	1
-7	1	1
 \.
 
 
@@ -195,7 +186,6 @@ SELECT pg_catalog.setval('bands_venues_id_seq', 7, true);
 --
 
 COPY venues (id, name) FROM stdin;
-1	Holocene
 \.
 
 
@@ -207,7 +197,7 @@ SELECT pg_catalog.setval('venues_id_seq', 1, true);
 
 
 --
--- Name: bands_pkey; Type: CONSTRAINT; Schema: public; Owner: xanadu; Tablespace: 
+-- Name: bands_pkey; Type: CONSTRAINT; Schema: public; Owner: xanadu; Tablespace:
 --
 
 ALTER TABLE ONLY bands
@@ -215,7 +205,7 @@ ALTER TABLE ONLY bands
 
 
 --
--- Name: bands_venues_pkey; Type: CONSTRAINT; Schema: public; Owner: xanadu; Tablespace: 
+-- Name: bands_venues_pkey; Type: CONSTRAINT; Schema: public; Owner: xanadu; Tablespace:
 --
 
 ALTER TABLE ONLY bands_venues
@@ -223,7 +213,7 @@ ALTER TABLE ONLY bands_venues
 
 
 --
--- Name: venues_pkey; Type: CONSTRAINT; Schema: public; Owner: xanadu; Tablespace: 
+-- Name: venues_pkey; Type: CONSTRAINT; Schema: public; Owner: xanadu; Tablespace:
 --
 
 ALTER TABLE ONLY venues
@@ -243,4 +233,3 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 --
 -- PostgreSQL database dump complete
 --
-

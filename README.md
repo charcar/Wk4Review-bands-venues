@@ -14,7 +14,20 @@
     * For Gradle: if you are using Homebrew on Mac:
         * $ brew update
         * $ brew install gradle
-* In the top level of the cloned directory, run the following command in your terminal:
+    * For Postgres: if you are using Homebrew on Mac:
+        * $ brew install postgres
+        * $ echo "export PGDATA=/usr/local/var/postgres" >> ~/.bash_profile
+        * $ echo "export PGHOST=/tmp" >> ~/.bash_profile
+        * $ source ~/.bash_profile
+* Open a new terminal window to start Postgres server:
+    * $ postgres
+* Open a new terminal window to build the database:
+    * $ psql
+    * # CREATE DATABASE band_venues;
+    * Switch back to the shell and run
+    * $ psql band_venues < band_venues.sql
+    * A database with the appropriate tables should now be established
+* Run the server in the top level of the cloned directory:
     * $ gradle run
 * Open your web browser of choice to localhost:4567
 
